@@ -614,6 +614,36 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(120, 119, 198, 0.5);
         }
+
+        /* Nuevos botones de control para Tetris */
+        .tetris-game-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tetris-game-btn {
+            padding: 15px;
+            background: linear-gradient(135deg, #7877c6, #5a59a8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(120, 119, 198, 0.3);
+        }
+        
+        .tetris-game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(120, 119, 198, 0.5);
+        }
+        
+        .tetris-game-btn:active {
+            transform: translateY(0);
+        }
         
         .derivative-exercise-modal {
             position: fixed;
@@ -647,32 +677,58 @@
 
         .modal-buttons {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             margin-top: 25px;
             gap: 15px;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #ff6b9d;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Sección de créditos */
+        .credits {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .close-btn:hover {
-            background: rgba(255, 107, 157, 0.2);
-            transform: rotate(90deg);
+        
+        .credits p {
+            margin: 8px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .credits .authors {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .credits .author-name {
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+        }
+        
+        .credits .institution {
+            font-weight: 600;
+            color: #78dbff;
+            margin-top: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .credits .career {
+            font-weight: 500;
+            color: #78dbff;
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+        
+        .credits .elaborated-by {
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            font-size: 1.1rem;
         }
         
         @media (max-width: 768px) {
@@ -715,6 +771,11 @@
             .modal-buttons {
                 flex-direction: column;
                 gap: 10px;
+            }
+
+            .credits .authors {
+                flex-direction: column;
+                gap: 15px;
             }
         }
 
@@ -771,7 +832,81 @@
                 <div class="tab" data-tab="practice">🎯 Práctica</div>
                 <div class="tab" data-tab="tetris">🎮 Tetris</div>
             </div>
-            
+            <!-- Reglas de Operaciones Básicas -->
+                <div class="category-section">
+                    <h3 class="category-title">🔧 Reglas de Operaciones</h3>
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <div class="property-title">
+                                <span class="property-icon">➕</span>
+                                <span>Regla de la Suma</span>
+                            </div>
+                            <p>La derivada de una suma es la suma de las derivadas.</p>
+                            <div class="property-formula">
+                                d/dx [u + v] = u' + v'
+                            </div>
+                            <div class="property-example">
+                                <strong>Ejemplo:</strong> Si f(x) = x² + sin(x), entonces f'(x) = 2x + cos(x)
+                            </div>
+                        </div>
+                        
+                        <div class="property-card">
+                            <div class="property-title">
+                                <span class="property-icon">➖</span>
+                                <span>Regla de la Resta</span>
+                            </div>
+                            <p>La derivada de una resta es la resta de las derivadas.</p>
+                            <div class="property-formula">
+                                d/dx [u - v] = u' - v'
+                            </div>
+                            <div class="property-example">
+                                <strong>Ejemplo:</strong> Si f(x) = x³ - cos(x), entonces f'(x) = 3x² + sin(x)
+                            </div>
+                        </div>
+                        
+                        <div class="property-card">
+                            <div class="property-title">
+                                <span class="property-icon">✖️</span>
+                                <span>Regla del Producto</span>
+                            </div>
+                            <p>Derivada del producto de dos funciones.</p>
+                            <div class="property-formula">
+                                d/dx [u·v] = u'·v + u·v'
+                            </div>
+                            <div class="property-example">
+                                <strong>Ejemplo:</strong> Si f(x) = x²·sin(x), entonces f'(x) = 2x·sin(x) + x²·cos(x)
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <div class="property-title">
+                                <span class="property-icon">➗</span>
+                                <span>Regla del Cociente</span>
+                            </div>
+                            <p>Derivada del cociente de dos funciones.</p>
+                            <div class="property-formula">
+                                d/dx [u/v] = (u'·v - u·v')/v²
+                            </div>
+                            <div class="property-example">
+                                <strong>Ejemplo:</strong> Si f(x) = sin(x)/x, entonces f'(x) = (x·cos(x) - sin(x))/x²
+                            </div>
+                        </div>
+                        
+                        <div class="property-card">
+                            <div class="property-title">
+                                <span class="property-icon">⛓️</span>
+                                <span>Regla de la Cadena</span>
+                            </div>
+                            <p>Derivada de funciones compuestas.</p>
+                            <div class="property-formula">
+                                d/dx [f(g(x))] = f'(g(x)) · g'(x)
+                            </div>
+                            <div class="property-example">
+                                <strong>Ejemplo:</strong> Si f(x) = sin(x²), entonces f'(x) = cos(x²)·2x
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div id="properties" class="content active">
                 <h2>Propiedades de Derivadas</h2>
                 <p>Explora y aprende derivadas desde cero:</p>
@@ -1151,7 +1286,7 @@
                 <p>Pon a prueba tus habilidades con nuestros ejercicios interactivos:</p>
                 
                 <div class="exercise">
-                    <div class="exercise-title">Ejercicio <span id="exercise-number">1</span> de 15</div>
+                    <div class="exercise-title">Ejercicio <span id="exercise-number">1</span> de 30</div>
                     <div class="exercise-problem" id="problem">Deriva: f(x) = 3x² + 5x - 2</div>
                     
                     <div class="options" id="options">
@@ -1165,7 +1300,7 @@
                 
                 <div class="score-container">
                     <div>
-                        <strong>Puntuación:</strong> <span id="score">0</span>/15
+                        <strong>Puntuación:</strong> <span id="score">0</span>/30
                     </div>
                     <div>
                         <strong>Progreso:</strong>
@@ -1209,6 +1344,18 @@
                                 <p>↓ : Bajar</p>
                                 <p>Espacio : Caída rápida</p>
                             </div>
+
+                            <!-- Nuevos botones de control para Tetris -->
+                            <div class="tetris-info">
+                                <h3>Controles Móviles</h3>
+                                <div class="tetris-game-buttons">
+                                    <button class="tetris-game-btn" id="left-btn">←</button>
+                                    <button class="tetris-game-btn" id="rotate-btn">↻</button>
+                                    <button class="tetris-game-btn" id="right-btn">→</button>
+                                    <button class="tetris-game-btn" id="down-btn" style="grid-column: 2;">↓</button>
+                                    <button class="tetris-game-btn" id="hard-drop-btn" style="grid-column: 1 / span 3;">Caída Rápida</button>
+                                </div>
+                            </div>
                             
                             <div class="tetris-controls">
                                 <button class="tetris-control-btn" id="start-btn">Iniciar</button>
@@ -1219,12 +1366,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Sección de créditos -->
+        <div class="credits">
+            <p class="institution">UNIVERSIDAD NACIONAL DE JULIACA</p>
+            <p class="career">Carrera Profesional de Software y Sistemas</p>
+            <p class="elaborated-by">Elaborado por:</p>
+            <div class="authors">
+                <div class="author">
+                    <p class="author-name">Cristhofer Josue Mendoza Callata</p>
+                </div>
+                <div class="author">
+                    <p class="author-name">Sarahi Chavez Singuña</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal para ejercicio de derivadas cuando pierdes en Tetris -->
     <div id="derivative-modal" class="derivative-exercise-modal">
         <div class="derivative-exercise-content">
-            <button class="close-btn" id="modal-close-btn">×</button>
             <h2>¡Juego Terminado!</h2>
             <p>Resuelve este ejercicio para continuar:</p>
             
@@ -1239,7 +1400,6 @@
                 
                 <div class="modal-buttons">
                     <button class="btn" id="modal-continue-btn" disabled>Continuar Jugando</button>
-                    <button class="btn btn-close" id="modal-close-game-btn">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -1322,7 +1482,6 @@
                 correct: 0,
                 explanation: "Usando la regla del producto: 1·cos(x) + x·(-sin(x)) = cos(x) - x·sin(x)"
             },
-            // NUEVOS EJERCICIOS
             {
                 problem: "Deriva: f(x) = √(4x)",
                 options: ["2/√(4x)", "1/√(4x)", "2/√x", "1/√x"],
@@ -1382,6 +1541,97 @@
                 options: ["2sec(2x)tan(2x)", "sec(2x)tan(2x)", "2sec²(2x)", "sec²(2x)"],
                 correct: 0,
                 explanation: "Usando la regla de la cadena: sec(2x)tan(2x)·2 = 2sec(2x)tan(2x)"
+            },
+            // NUEVOS 15 EJERCICIOS ADICIONALES
+            {
+                problem: "Deriva: f(x) = 4x³ - 2x² + 7x - 1",
+                options: ["12x² - 4x + 7", "12x² - 4x", "12x² + 4x + 7", "4x² - 2x + 7"],
+                correct: 0,
+                explanation: "Usando la regla de la potencia: 4·3x² - 2·2x¹ + 7·1x⁰ - 0 = 12x² - 4x + 7"
+            },
+            {
+                problem: "Deriva: f(x) = cos(3x)",
+                options: ["-3sin(3x)", "3sin(3x)", "-sin(3x)", "3cos(3x)"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: -sin(3x)·3 = -3sin(3x)"
+            },
+            {
+                problem: "Deriva: f(x) = 5ˣ",
+                options: ["5ˣ·ln(5)", "5ˣ", "x·5ˣ⁻¹", "5ˣ/ln(5)"],
+                correct: 0,
+                explanation: "Usando la fórmula para derivadas exponenciales: 5ˣ·ln(5)"
+            },
+            {
+                problem: "Deriva: f(x) = ln(2x²)",
+                options: ["2/x", "1/x", "2/(x²)", "4/x"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: (1/(2x²))·4x = 2/x"
+            },
+            {
+                problem: "Deriva: f(x) = x·eˣ",
+                options: ["eˣ(x + 1)", "eˣ", "x·eˣ", "eˣ(x - 1)"],
+                correct: 0,
+                explanation: "Usando la regla del producto: 1·eˣ + x·eˣ = eˣ(x + 1)"
+            },
+            {
+                problem: "Deriva: f(x) = √(x³)",
+                options: ["(3√x)/2", "3x²/(2√x³)", "3√x", "(3x²)/2"],
+                correct: 1,
+                explanation: "f(x) = x^(3/2), usando regla de la potencia: (3/2)x^(1/2) = 3x²/(2√x³)"
+            },
+            {
+                problem: "Deriva: f(x) = cot(4x)",
+                options: ["-4csc²(4x)", "4csc²(4x)", "-csc²(4x)", "4cot(4x)"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: -csc²(4x)·4 = -4csc²(4x)"
+            },
+            {
+                problem: "Deriva: f(x) = (2x+1)⁴",
+                options: ["8(2x+1)³", "4(2x+1)³", "2(2x+1)³", "(2x+1)³"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: 4(2x+1)³·2 = 8(2x+1)³"
+            },
+            {
+                problem: "Deriva: f(x) = log₃(x)",
+                options: ["1/(x·ln(3))", "1/x", "1/(x·ln(10))", "1/(x·log₃(e))"],
+                correct: 0,
+                explanation: "Usando la fórmula para derivadas logarítmicas: 1/(x·ln(3))"
+            },
+            {
+                problem: "Deriva: f(x) = sin(x)·cos(x)",
+                options: ["cos²(x) - sin²(x)", "cos²(x) + sin²(x)", "2cos(x)sin(x)", "sin²(x) - cos²(x)"],
+                correct: 0,
+                explanation: "Usando la regla del producto: cos(x)·cos(x) + sin(x)·(-sin(x)) = cos²(x) - sin²(x)"
+            },
+            {
+                problem: "Deriva: f(x) = e^(2x+1)",
+                options: ["2e^(2x+1)", "e^(2x+1)", "2e^(2x)", "e^(2x)"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: e^(2x+1)·2 = 2e^(2x+1)"
+            },
+            {
+                problem: "Deriva: f(x) = 1/x",
+                options: ["-1/x²", "1/x²", "-x²", "ln|x|"],
+                correct: 0,
+                explanation: "f(x) = x⁻¹, usando regla de la potencia: -1·x⁻² = -1/x²"
+            },
+            {
+                problem: "Deriva: f(x) = arctan(2x)",
+                options: ["2/(1+4x²)", "1/(1+4x²)", "2/(1+x²)", "1/(1+2x²)"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: (1/(1+(2x)²))·2 = 2/(1+4x²)"
+            },
+            {
+                problem: "Deriva: f(x) = x²·ln(x)",
+                options: ["2x·ln(x) + x", "2x·ln(x)", "x·ln(x) + x", "2x + 1/x"],
+                correct: 0,
+                explanation: "Usando la regla del producto: 2x·ln(x) + x²·(1/x) = 2x·ln(x) + x"
+            },
+            {
+                problem: "Deriva: f(x) = csc(3x)",
+                options: ["-3csc(3x)cot(3x)", "3csc(3x)cot(3x)", "-csc(3x)cot(3x)", "3csc²(3x)"],
+                correct: 0,
+                explanation: "Usando la regla de la cadena: -csc(3x)cot(3x)·3 = -3csc(3x)cot(3x)"
             }
         ];
 
@@ -1817,7 +2067,7 @@
                 requestAnimationFrame(update);
             }
             
-            // Controles de teclado - CORREGIDO
+            // Controles de teclado
             document.addEventListener('keydown', event => {
                 if (gameOver || isPaused || !currentPiece) return;
                 
@@ -1830,6 +2080,37 @@
                         event.preventDefault(); // Evitar que la página se desplace
                         hardDrop(); 
                         break;
+                }
+            });
+            
+            // Nuevos controles de botones
+            document.getElementById('left-btn').addEventListener('click', () => {
+                if (!gameOver && !isPaused && currentPiece) {
+                    movePiece(-1);
+                }
+            });
+            
+            document.getElementById('right-btn').addEventListener('click', () => {
+                if (!gameOver && !isPaused && currentPiece) {
+                    movePiece(1);
+                }
+            });
+            
+            document.getElementById('rotate-btn').addEventListener('click', () => {
+                if (!gameOver && !isPaused && currentPiece) {
+                    rotatePiece();
+                }
+            });
+            
+            document.getElementById('down-btn').addEventListener('click', () => {
+                if (!gameOver && !isPaused && currentPiece) {
+                    dropPiece();
+                }
+            });
+            
+            document.getElementById('hard-drop-btn').addEventListener('click', () => {
+                if (!gameOver && !isPaused && currentPiece) {
+                    hardDrop();
                 }
             });
             
@@ -1863,8 +2144,6 @@
             const optionsContainer = document.getElementById('modal-options');
             const feedbackElement = document.getElementById('modal-feedback');
             const continueButton = document.getElementById('modal-continue-btn');
-            const closeButton = document.getElementById('modal-close-btn');
-            const closeGameButton = document.getElementById('modal-close-game-btn');
             
             // Seleccionar un ejercicio aleatorio
             const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
@@ -1921,16 +2200,6 @@
             continueButton.onclick = function() {
                 modal.style.display = 'none';
                 initTetris();
-            };
-
-            // Configurar el botón de cerrar (X)
-            closeButton.onclick = function() {
-                modal.style.display = 'none';
-            };
-
-            // Configurar el botón de cerrar juego
-            closeGameButton.onclick = function() {
-                modal.style.display = 'none';
             };
         }
 
